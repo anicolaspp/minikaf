@@ -15,3 +15,22 @@ project/plugins/project/
 # Scala-IDE specific
 .scala_dependencies
 .worksheet
+.idea/compiler.xml
+.idea/encodings.xml
+.idea/inspectionProfiles/
+.idea/libraries/SBT__io_reactivex_rxjava_1_2_4_jar.xml
+.idea/libraries/SBT__org_scala_lang_modules_scala_xml_2_11_1_0_2_jar.xml
+.idea/libraries/SBT__org_scalatest_scalatest_2_11_2_2_4_jar.xml
+.idea/misc.xml
+.idea/modules.xml
+.idea/modules/
+.idea/sbt.xml
+.idea/scala_compiler.xml
+.idea/workspace.xml
+build.sbt
+project/
+src/main/java/
+src/main/resources/
+src/main/scala-2.11/
+src/main/scala-2.12/
+src/test/
