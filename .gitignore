@@ -27,12 +27,6 @@ project/plugins/project/
 .idea/sbt.xml
 .idea/scala_compiler.xml
 .idea/workspace.xml
-project/
-src/main/java/
-src/main/resources/
-src/main/scala-2.11/
-src/main/scala-2.12/
-src/test/
 .idea/libraries/SBT__io_reactivex_rxscala_2_12_0_26_5_jar.xml
 .idea/libraries/SBT__org_scala_lang_scala_library_2_12_1_jar.xml
 .idea/libraries/SBT__org_scala_lang_scala_reflect_2_12_1_jar.xml
