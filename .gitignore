@@ -8,25 +8,15 @@
 dist/*
 target/
 lib_managed/
+src_managed/
+project/boot/
+project/plugins/project/
 
 # Scala-IDE specific
 .scala_dependencies
 .worksheet
-.idea/compiler.xml
-.idea/encodings.xml
-.idea/inspectionProfiles/
-.idea/libraries/SBT__io_reactivex_rxjava_1_2_4_jar.xml
-.idea/libraries/SBT__org_scala_lang_modules_scala_xml_2_11_1_0_2_jar.xml
-.idea/libraries/SBT__org_scalatest_scalatest_2_11_2_2_4_jar.xml
-.idea/misc.xml
-.idea/modules.xml
-.idea/modules/
-.idea/sbt.xml
-.idea/scala_compiler.xml
-.idea/workspace.xml
-.idea/libraries/SBT__io_reactivex_rxscala_2_12_0_26_5_jar.xml
-.idea/libraries/SBT__org_scala_lang_scala_library_2_12_1_jar.xml
-.idea/libraries/SBT__org_scala_lang_scala_reflect_2_12_1_jar.xml
-.idea/uiDesigner.xml
-.idea/vcs.xml
+
 .idea/
+project/
+core/src/main/java/
+core/src/main/scala-2.11/
