@@ -27,7 +27,6 @@ project/plugins/project/
 .idea/sbt.xml
 .idea/scala_compiler.xml
 .idea/workspace.xml
-build.sbt
 project/
 src/main/java/
 src/main/resources/
@@ -39,3 +38,4 @@ src/test/
 .idea/libraries/SBT__org_scala_lang_scala_reflect_2_12_1_jar.xml
 .idea/uiDesigner.xml
 .idea/vcs.xml
+.idea/
