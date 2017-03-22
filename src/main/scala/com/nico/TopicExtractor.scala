@@ -1,6 +1,4 @@
-/**
-  * Created by anicolaspp on 3/3/17.
-  */
+
 package com.nico
 
 trait TopicExtractor {

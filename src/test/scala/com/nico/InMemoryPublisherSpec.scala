@@ -1,6 +1,4 @@
-/**
-  * Created by anicolaspp on 3/2/17.
-  */
+
 package com.nico
 
 import org.scalatest.{BeforeAndAfterEach, FlatSpec, Matchers}
@@ -12,11 +10,15 @@ class InMemoryPublisherSpec extends FlatSpec
 
   import Events._
 
+  implicit def toAnyEvent[A]: ToEvent[A] = new ToEvent[A] {
+    override def event(a: A) = E(a)
+  }
+
   it should "send event to log" in {
 
     val publisher = Publisher()
 
-    publisher.publish(Event.toEvent("hehe"))
+    publisher.publish("hehe")
 
     InMemoryLog.instance.run.get("TestEvent").foreach(_.length should be (1))
     InMemoryLog.instance.run.get("TestEvent").foreach(_ should be (List(E("hehe"))))

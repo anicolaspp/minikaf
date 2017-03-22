@@ -1,7 +1,3 @@
-/**
-  * Created by dserrano on 27/01/17.
-  */
-
 package com.nico
 
 trait Event[A] {

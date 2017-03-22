@@ -1,6 +1,4 @@
-/**
-  * Created by anicolaspp on 3/22/17.
-  */
+
 package com.nico
 
 import rx.lang.scala.Subject
@@ -18,8 +16,11 @@ object InMemoryLog {
     lazy val stream = Subject[EventRecord[Event[_]]]
     private[this] val log = scala.collection.mutable.Map.empty[String, List[Event[_]]]
 
-    def append[A](a: A, topic: String) = {
-      log.update(topic, withSize(1000, a :: log.getOrElseUpdate(topic, List.empty[Event[A]])))
+    def append[A](a: Event[A], topic: String) = {
+
+      val update = log.getOrElseUpdate(topic, List.empty[Event[A]])
+
+      log.update(topic, withSize(1000, a :: update))
 
       stream.onNext(EventRecord(topic, a))
     }

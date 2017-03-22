@@ -1,9 +1,6 @@
-/**
-  * Created by anicolaspp on 3/3/17.
-  */
+
 package com.nico
 
-import com.nico.Event.E
 import org.scalatest.{BeforeAndAfterEach, FlatSpec, Matchers}
 
 object Events {
