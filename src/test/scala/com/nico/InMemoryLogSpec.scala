@@ -21,7 +21,7 @@ class InMemoryLogSpec extends FlatSpec
   it should "be a unique (shared) log" in {
     val logger = InMemoryLog.instance
 
-    logger.append("hello", "a")
+    logger.append(E("hello"), "a")
 
     val otherLogger = InMemoryLog.instance
     otherLogger.run.get("a").foreach(_ should be (List(E("hello"))))
@@ -31,8 +31,8 @@ class InMemoryLogSpec extends FlatSpec
     val logger = InMemoryLog.instance
     val other  = InMemoryLog.instance
 
-    logger.append("hello", "a")
-    other.append("world", "a")
+    logger.append(E("hello"), "a")
+    other.append(E("world"), "a")
 
     InMemoryLog.instance.run.get("a").foreach(_.length should be(2))
 
@@ -46,7 +46,7 @@ class InMemoryLogSpec extends FlatSpec
   it should "limit the size of the log" in {
     val logger = InMemoryLog.instance
 
-    (1 to 1005).foreach(i => logger.append(i.toString, "a"))
+    (1 to 1005).foreach(i => logger.append(E(i.toString), "a"))
 
     logger.run("a").length should be (1000)
   }
@@ -54,7 +54,7 @@ class InMemoryLogSpec extends FlatSpec
   it should "contain the most recent events" in {
     val logger = InMemoryLog.instance
 
-    (1 to 1005).foreach(i => logger.append(i.toString, "a"))
+    (1 to 1005).foreach(i => logger.append(E(i.toString), "a"))
 
     logger
       .run("a")

@@ -1,6 +1,8 @@
 
 package com.nico
 
+import scala.reflect.runtime.universe._
+
 trait TopicExtractor {
-  def topicFor[A](a: A): String = a.getClass.getName.replace("$", ".")
+  def topicFor[A](implicit typeTag: TypeTag[A]): String = typeTag.tpe.toString //.replace("$", ".")
 }

@@ -6,7 +6,7 @@ trait Event[A] {
 
 object Event {
 
-  implicit def toEvent[A](a: A): Event[A] = E(a)
+//  implicit def toEvent[A](a: A): Event[A] = E(a)
 
   case class E[A](value: A) extends Event[A]
 }

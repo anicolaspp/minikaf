@@ -6,6 +6,7 @@ import Event._
 
 class InMemoryPublisherSpec extends FlatSpec
   with Matchers
+  with TopicExtractor
   with BeforeAndAfterEach {
 
   import Events._
@@ -30,19 +31,21 @@ class InMemoryPublisherSpec extends FlatSpec
 
     (0 to 99).foreach(i => publisher.publish(TestEvenWithId(i.toString, i)))
 
-    InMemoryLog.instance.run.get("Int").foreach(_.length should be (100))
-    InMemoryLog.instance.run.get("Int").foreach(_.reverse.zipWithIndex.foreach { case (e, i) =>
+    InMemoryLog.instance.run.get(topicFor[TestEvenWithId]).foreach(_.length should be (100))
+    InMemoryLog.instance.run.get(topicFor[TestEvenWithId]).foreach(_.reverse.zipWithIndex.foreach { case (e, i) =>
 
-        e.asInstanceOf[TestEvenWithId].id.toString should be (i.toString)
+        e.value.asInstanceOf[TestEvenWithId].id.toString should be (i.toString)
+
+//        e.asInstanceOf[TestEvenWithId].id.toString should be (i.toString)
     })
   }
 
   it should "separate events by topic automatically" in {
     val publisher = Publisher()
 
-    publisher.publish(Event.toEvent("hello"))
-    publisher.publish(TestEvenWithId("other", 5))
-    publisher.publish(Event.toEvent("world"))
+    publisher.publish("hello")
+    publisher.publish(Data("other", 5))
+    publisher.publish("world")
 
     InMemoryLog.instance.run.get("TestEvent").foreach(_ should be (List("world", "hello")))
     InMemoryLog.instance.run.get("TestEvenWithId").foreach(topic => {
