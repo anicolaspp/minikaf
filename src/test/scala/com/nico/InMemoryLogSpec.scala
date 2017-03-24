@@ -1,6 +1,7 @@
 
 package com.nico
 
+import com.nico.Event.E
 import org.scalatest.{BeforeAndAfterEach, FlatSpec, Matchers}
 
 object Events {
@@ -64,4 +65,26 @@ class InMemoryLogSpec extends FlatSpec
   }
 
   override protected def beforeEach(): Unit = InMemoryLog.clear()
+}
+
+class ToEventSpecs extends FlatSpec with Matchers {
+
+  import ToEvent._
+  import ToEvent.ops._
+
+  case class MyEvent(value: Int) extends Event[Int]
+
+  trait Op
+  case class AddMoney(value: Int) extends Op
+
+  case class AddMoneyE(value: Op) extends Event[Op]
+
+  it should "create an event" in {
+    5.event should be (E(5))
+  }
+
+  it should "create events" in {
+    ToEvent.event(5)(MyEvent) should be (MyEvent(5))
+  }
+
 }
