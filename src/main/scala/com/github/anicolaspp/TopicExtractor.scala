@@ -1,5 +1,5 @@
 
-package com.nico
+package com.github.anicolaspp
 
 import scala.reflect.runtime.universe._
 

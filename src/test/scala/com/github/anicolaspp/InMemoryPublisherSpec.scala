@@ -1,15 +1,12 @@
 
-package com.nico
+package com.github.anicolaspp
 
 import org.scalatest.{BeforeAndAfterEach, FlatSpec, Matchers}
-import Event._
 
 class InMemoryPublisherSpec extends FlatSpec
   with Matchers
   with TopicExtractor
   with BeforeAndAfterEach {
-
-  import Events._
 
   implicit def toAnyEvent[A]: ToEvent[A] = new ToEvent[A] {
     override def event(a: A) = E(a)
@@ -33,10 +30,7 @@ class InMemoryPublisherSpec extends FlatSpec
 
     InMemoryLog.instance.run.get(topicFor[TestEvenWithId]).foreach(_.length should be (100))
     InMemoryLog.instance.run.get(topicFor[TestEvenWithId]).foreach(_.reverse.zipWithIndex.foreach { case (e, i) =>
-
-        e.value.asInstanceOf[TestEvenWithId].id.toString should be (i.toString)
-
-//        e.asInstanceOf[TestEvenWithId].id.toString should be (i.toString)
+      e.value.asInstanceOf[TestEvenWithId].id.toString should be (i.toString)
     })
   }
 
@@ -52,7 +46,7 @@ class InMemoryPublisherSpec extends FlatSpec
       topic.head.asInstanceOf[TestEvenWithId].id.toString should be ("5")
     })
   }
-
+  
   override protected def beforeEach(): Unit = InMemoryLog.clear()
 }
 

@@ -1,22 +1,19 @@
 
-package com.nico
+package com.github.anicolaspp
 
-import com.nico.Event.E
 import org.scalatest.{BeforeAndAfterEach, FlatSpec, Matchers}
 
-object Events {
-  case class TestEvenWithId(value: String, id: Int) extends Event[String]
-}
+
+case class TestEvenWithId(value: String, id: Int) extends Event[String]
 
 
 class InMemoryLogSpec extends FlatSpec
   with Matchers
   with BeforeAndAfterEach {
 
-  import Event._
 
   it should "be a singleton log object" in {
-    InMemoryLog.instance should be (InMemoryLog.instance)
+    InMemoryLog.instance should be(InMemoryLog.instance)
   }
 
   it should "be a unique (shared) log" in {
@@ -25,12 +22,12 @@ class InMemoryLogSpec extends FlatSpec
     logger.append(E("hello"), "a")
 
     val otherLogger = InMemoryLog.instance
-    otherLogger.run.get("a").foreach(_ should be (List(E("hello"))))
+    otherLogger.run.get("a").foreach(_ should be(List(E("hello"))))
   }
 
   it should "clear the log for everyone" in {
     val logger = InMemoryLog.instance
-    val other  = InMemoryLog.instance
+    val other = InMemoryLog.instance
 
     logger.append(E("hello"), "a")
     other.append(E("world"), "a")
@@ -39,9 +36,9 @@ class InMemoryLogSpec extends FlatSpec
 
     InMemoryLog.clear()
 
-    logger.run.keys.toList.length should be (0)
-    other.run.keys.toList.length should be (0)
-    InMemoryLog.instance.run.keys.toList.length should be (0)
+    logger.run.keys.toList.length should be(0)
+    other.run.keys.toList.length should be(0)
+    InMemoryLog.instance.run.keys.toList.length should be(0)
   }
 
   it should "limit the size of the log" in {
@@ -49,7 +46,7 @@ class InMemoryLogSpec extends FlatSpec
 
     (1 to 1005).foreach(i => logger.append(E(i.toString), "a"))
 
-    logger.run("a").length should be (1000)
+    logger.run("a").length should be(1000)
   }
 
   it should "contain the most recent events" in {
@@ -60,31 +57,10 @@ class InMemoryLogSpec extends FlatSpec
     logger
       .run("a")
       .map(_.asInstanceOf[E[String]].value)
-      .reverse should be ((6 to 1005).map(_.toString).toList)
+      .reverse should be((6 to 1005).map(_.toString).toList)
 
   }
 
   override protected def beforeEach(): Unit = InMemoryLog.clear()
 }
 
-class ToEventSpecs extends FlatSpec with Matchers {
-
-  import ToEvent._
-  import ToEvent.ops._
-
-  case class MyEvent(value: Int) extends Event[Int]
-
-  trait Op
-  case class AddMoney(value: Int) extends Op
-
-  case class AddMoneyE(value: Op) extends Event[Op]
-
-  it should "create an event" in {
-    5.event should be (E(5))
-  }
-
-  it should "create events" in {
-    ToEvent.event(5)(MyEvent) should be (MyEvent(5))
-  }
-
-}
