@@ -3,7 +3,7 @@ name := "minikaf"
 organization in ThisBuild := "com.github.anicolaspp"
 
 scalaVersion := "2.12.2"
-version := "1.0.0"
+version := "1.0.1-SNAPSHOT"
 
 //lazy val core = project.in(file("core"))
 
