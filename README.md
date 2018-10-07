@@ -1,6 +1,6 @@
 # Minikaf
 
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.anicolaspp/minikaf/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.anicolaspp/minikaf)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.anicolaspp/minikaf/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.anicolaspp/minikaf) [![Build Status](https://travis-ci.com/anicolaspp/minikaf.svg?branch=master)](https://travis-ci.com/anicolaspp/minikaf)
 
 ```sbt
 libraryDependencies += "com.github.anicolaspp" % "minikaf_2.12" % "x.y.z"
