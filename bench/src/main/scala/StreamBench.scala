@@ -1,7 +1,7 @@
 package com.github.anicolaspp
+package bench
 
-
-import org.openjdk.jmh.annotations.{Benchmark, Param, Scope, Setup, State}
+import org.openjdk.jmh.annotations.{Scope, State}
 
 @State(Scope.Benchmark)
 class StreamBench {

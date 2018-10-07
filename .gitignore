@@ -15,5 +15,5 @@ src_managed/
 .worksheet
 
 .idea/
-core/src/main/java/
-core/src/main/scala-2.11/
+src/main/java/
+src/main/scala-2.11/

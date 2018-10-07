@@ -14,6 +14,7 @@ object InMemoryLog {
   class InMemoryLog {
 
     lazy val stream: Subject[EventRecord[Event[_]]] = Subject[EventRecord[Event[_]]]
+    
     private[this] val log = scala.collection.mutable.Map.empty[String, List[Event[_]]]
 
     def append[A](a: Event[A], topic: String): Unit = {
@@ -48,6 +49,7 @@ object Example {
     val p = Publisher()
 
     p.publish(5)
+
 
   }
 
