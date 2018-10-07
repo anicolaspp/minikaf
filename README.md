@@ -51,7 +51,7 @@ publisher.publish("hello")
 
 The result will be:
  
-```cmd
+```scala
 (Int, 5)
 ```
 
