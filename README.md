@@ -13,19 +13,19 @@ in the following way:
 
 First, we need to create the `Subject` with the specific type of message we are going to send
 
-```
+```scala
 val subject = Subject[Int]
 ```
 
 Then we need a `subscriber` that listen to the `subject`
 
-```
+```scala
 def subscribeTo[A](s: Subject[A], with: A => Unit) = s.subscribe(event => with(event)) 
 ```
 
 And now we call `onNext` to push the message into the `Stream`
 
-```
+```scala
 subject.onNext(5)
 ```
 
@@ -40,7 +40,7 @@ code without knowing anything about the rest. In here is where the `Kafka` ideas
 Our subscription model works similar to `Kafka` where we publish a message into a topic and receive message from topics.
 However, we don't want to specify the topic itself, we are going to use the `types` of the message as topics.
 
-```
+```scala
 val subscriber = Subscriber()
 subscriber.subscribe[Int](e => println((e.topic, e.value)))
 
@@ -51,7 +51,7 @@ publisher.publish("hello")
 
 The result will be:
  
-```
+```cmd
 (Int, 5)
 ```
 
@@ -61,7 +61,7 @@ We do the same when we `subscribe`. We use the type parameter as the `topic` for
 As you might noticed, we are not connecting in any way the `subscriber` and `publisher`, all this machinery is happening 
 behind the scene. Also, we can have multiple `subscribers` and `publishers` without problem. Let's see an example.
 
-```
+```scala
 val intSubscriber = Subscriber()
 intSubscriber.subscribe[Int](e => println(s"I am an Int: $e.value")
 
