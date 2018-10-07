@@ -39,7 +39,7 @@ Once the message is pushed, the defined function `someFunction` will be executed
 
 Our subscription model works similar to `Kafka`, where messages are published and consumed to and from topics, but with complete independence from each other. 
 
-The specific topic used the send and received messages is automatically extracted from the type of the message being sent. 
+The specific topic used to send and received messages is automatically extracted from the type of the message being sent. 
 
 ```scala
 val subscriber = Subscriber()
