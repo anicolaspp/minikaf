@@ -1,4 +1,7 @@
 # Minikaf
+
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.anicolaspp/minikaf/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.anicolaspp/minikaf)
+
 **Minikaf** is a minimal implementation of Publish / Subscriber for in memory communication.
 
 The main idea of this library is to have a pub / sub mechanism based on topics similar to `Kafka` using automatic topic 
