@@ -77,3 +77,11 @@ Publisher().publish("hello")
 ```
 
 Each `subscriber` will get only the messages that it is `subscribed` to.
+
+Sometimes, being able to `unsubscribe` from a particular topic is as important as the subscription itself. This is an easy operation in **Minikaf**.
+
+```scala
+stringSubscriber.unsubscribe()
+```
+
+After the call to `.unsubscribe`, the subscriber in question will not receive and process messages any longer. 
